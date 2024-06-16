@@ -24,6 +24,13 @@
             <artifactId>graphviz-java</artifactId>
             <version>0.18.1</version> <!-- 请替换为实际的最新版本号 -->
         </dependency>
+        <!-- https://mvnrepository.com/artifact/junit/junit -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <!-- 构建配置 -->

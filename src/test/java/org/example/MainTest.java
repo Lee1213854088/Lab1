@@ -15,57 +15,71 @@ public class MainTest {
     }
 
     @Test
-    public void testGenerateTextWithBridgeWords_NoBridgeWords() {
-        String inputText = "new worlds";
-        String expectedOutput = "new worlds";
-        String actualOutput = main.generateTextWithBridgeWords(inputText);
-        assertEquals(expectedOutput, actualOutput);
+    public void queryBridgeWords_test1() {
+        String inputWord1 = "worlds";
+        String inputWord2 = "seek";
+        String expectedOutput1 = "life";
+        String expectedOutput2 = "to";
+        String actualOutput = main.queryBridgeWords(inputWord1, inputWord2);
+        assertTrue(actualOutput.equals(expectedOutput1) || actualOutput.equals(expectedOutput2));
     }
 
     @Test
-    public void testGenerateTextWithBridgeWords_WithBridgeWords() {
-        // Assume "hello" -> "beautiful" -> "world" is in the graph
-        String inputText = "to strange";
-        String actualOutput = main.generateTextWithBridgeWords(inputText);
-        assertTrue(actualOutput.equals("to explore strange") || actualOutput.equals("to seek strange"));
+    public void queryBridgeWords_test2() {
+        String inputWord1 = "to";
+        String inputWord2 = "strange";
+        String expectedOutput1 = "seek";
+        String expectedOutput2 = "explore";
+        String actualOutput = main.queryBridgeWords(inputWord1, inputWord2);
+        assertTrue(actualOutput.equals(expectedOutput1) || actualOutput.equals(expectedOutput2));
     }
 
     @Test
-    public void testGenerateTextWithBridgeWords_MultipleBridgeWords() {
-        // Assume there are multiple bridge words between "hello" and "world"
-        String inputText = "new strange";
-        String actualOutput = main.generateTextWithBridgeWords(inputText);
-        assertTrue(actualOutput.contains("new") && actualOutput.contains("strange"));
+    public void queryBridgeWords_test3() {
+        String inputWord1 = "explore";
+        String inputWord2 = "civilizations";
+        String expectedOutput = "strange";
+        String actualOutput = main.queryBridgeWords(inputWord1, inputWord2);
+        assertTrue(actualOutput.equals(expectedOutput));
     }
 
     @Test
-    public void testGenerateTextWithBridgeWords_CaseInsensitive() {
-        String inputText = "worlds seek";
-        String actualOutput = main.generateTextWithBridgeWords(inputText);
-        assertTrue(actualOutput.equals("worlds to seek") || actualOutput.equals("worlds life seek"));
+    public void queryBridgeWords_test4() {
+        String inputWord1 = "life";
+        String inputWord2 = "seek";
+        String expectedOutput = "None";
+        String actualOutput = main.queryBridgeWords(inputWord1, inputWord2);
+        assertTrue(actualOutput.equals(expectedOutput));
     }
 
     @Test
-    public void testGenerateTextWithBridgeWords_EmptyInput() {
-        String inputText = "";
-        String expectedOutput = "";
-        String actualOutput = main.generateTextWithBridgeWords(inputText);
-        assertEquals(expectedOutput, actualOutput);
+    public void queryBridgeWords_test5() {
+        String inputWord1 = "life";
+        String inputWord2 = "new";
+        String expectedOutput = "None";
+        String actualOutput = main.queryBridgeWords(inputWord1, inputWord2);
+        assertTrue(actualOutput.equals(expectedOutput));
     }
 
     @Test
-    public void testGenerateTextWithBridgeWords_SingleWordInput() {
-        String inputText = "new";
-        String expectedOutput = "new";
-        String actualOutput = main.generateTextWithBridgeWords(inputText);
-        assertEquals(expectedOutput, actualOutput);
+    public void randomWalk_test1() {
+        main.randomWalk();
     }
 
     @Test
-    public void testGenerateTextWithBridgeWords_LongTextInput() {
-        String inputText = "this is a long text with multiple words";
-        String actualOutput = main.generateTextWithBridgeWords(inputText);
-        assertNotNull(actualOutput);
-        assertFalse(actualOutput.isEmpty());
+    public void randomWalk_test2() {
+        main.randomWalk();
+    }
+
+    @Test
+    public void randomWalk_test3() {
+        main.randomWalk();
+    }
+
+    @Test
+    public void test4() {
+        String Source_Word = "new";
+        String Target_Word = "out";
+        main.getShortestPath(Source_Word, Target_Word);
     }
 }

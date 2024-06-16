@@ -191,7 +191,7 @@ public class Main {
         return bridgeWords;
     }
 
-    public void queryBridgeWords(String word1, String word2) {
+    public String queryBridgeWords(String word1, String word2) {
         if (!graph.containsKey(word1) && !graph.containsKey(word2)) {
             System.out.println("Neither " + word1 + " nor " + word2 + " is in the graph!");
         } else if (!graph.containsKey(word1)) {
@@ -202,11 +202,15 @@ public class Main {
             List<String> bridgeWords = findBridgeWords(word1, word2);
             if (bridgeWords.isEmpty()) {
                 System.out.println("No bridge words from " + word1 + " to " + word2 + "!");
+                return "None";
             } else {
                 System.out.print("The bridge words from " + word1 + " to " + word2 + " are: ");
                 System.out.println(String.join(", ", bridgeWords));
             }
+            Iterator<String> iterator = bridgeWords.iterator();
+            return iterator.next();
         }
+        return "None";
     }
 
 
@@ -227,6 +231,9 @@ public class Main {
                     }
                 }
             }
+
+            addEdge(previousWord, "None");
+            previousWord = null;
         } catch(IOException e) {
             e.printStackTrace();
         }

@@ -1,2 +1,7 @@
+<<<<<<< HEAD
 To explore strange new worlds,
 To seek strange out new worlds life seek and new strange civilizations
+=======
+To explore strange new worlds,
+To seek out new life and new civilizations
+>>>>>>> dd5057c92e9faae16e485bdeabe73df24ec28b27
